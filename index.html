@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Load-Aware Quadruped Navigation with Online Geometry Estimation">
+  <meta property="og:title" content="Load-Aware Quadruped Navigation with Online Geometry Estimation">
+  <meta property="og:image" content="https://Qiii04.github.io/OBJNav/static/images/fig1_overview.png">
+  <title>Load-Aware Quadruped Navigation with Online Geometry Estimation</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/fontawesome.min.css">
+  <link rel="stylesheet" href="static/css/academicons.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+</head>
+<body>
+
+<!-- ======================= Title / Authors / Links ======================= -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Load-Aware Quadruped Navigation with Online Geometry Estimation</h1>
+
+          <!-- TODO: fill in authors -->
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><a href="#">Author One</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="#">Author Two</a><sup>1</sup>,</span>
+            <span class="author-block"><a href="#">Author Three</a><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Institution</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- TODO: replace # with real links -->
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="ai ai-arxiv"></i></span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="#" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/Qiii04/OBJNav" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= Figure 1 (teaser) ======================= -->
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <img src="static/images/fig1_overview.png" alt="Overview of the two-phase load-aware navigation learning framework" class="figure-img">
+      <p class="figure-caption">
+        <b>Figure 1.</b> An illustration of our proposed two-phase load-aware navigation learning framework.
+        <b>(a) ObjNav (Phase 1):</b> with privileged object size information, the policy learns load-aware
+        navigation strategies, adapting its behavior across sparse and narrow spaces according to different
+        object geometries (<i>X</i> &lt; <i>Y</i>, <i>X</i> = <i>Y</i>, <i>X</i> &gt; <i>Y</i>);
+        <b>(b) PreObjNav (Phase 2):</b> the robot infers object geometry from proprioception over time,
+        enabling adaptive navigation without size observation.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= Abstract ======================= -->
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Navigating cluttered environments while carrying objects remains a challenging problem for quadruped robots.
+            Compared with extensive works that focused on load-aware locomotion adaptation to maintain gait stability,
+            existing autonomous navigation systems generally ignore the influence of carried objects, which may extend
+            the robot's effective geometric boundary, leading to additional collisions or causing the robot to become
+            stuck during navigation. To address this, we propose a two-phase load-aware navigation learning framework.
+            In Phase 1, we train <b>ObjNav</b>, a load-aware navigation policy via reinforcement learning, enabling the
+            robot to adapt its trajectory and clearance behavior according to the geometric size of the carried object.
+            In Phase 2, we train <b>PreObjNav</b>, an online geometry predictor via imitation learning, which estimates
+            unknown payload geometry from interaction-based collision feedback. We evaluate the framework in cluttered
+            environments with loads of varying sizes and shapes. The results show that our navigation policy exhibits
+            clear load-aware behaviors, and the online geometry predictor effectively estimates object geometry through
+            slight collision interactions, achieving comparable navigation performance to a given-geometry policy without
+            requiring prior knowledge of the carried load. These results demonstrate the effectiveness of the proposed framework.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= Overview Framework ======================= -->
+<section class="section framework-section">
+  <div class="container is-max-widescreen">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Overview Framework</h2>
+      </div>
+    </div>
+    <img src="static/images/fig2_framework.png" alt="Two-phase training framework: Phase 1 ObjNav and Phase 2 PreObjNav" class="figure-img">
+    <p class="figure-caption">
+      <b>Figure 2.</b> Overview of the proposed framework. <b>Left:</b> carried objects of three geometry types
+      (Type 1: <i>X</i> &lt; <i>Y</i>, Type 2: <i>X</i> = <i>Y</i>, Type 3: <i>X</i> &gt; <i>Y</i>). <b>Middle:</b> in <b>Phase 1</b>, ObjNav is trained with
+      privileged object size via reinforcement learning; in <b>Phase 2</b>, PreObjNav learns a geometry predictor via
+      imitation learning from proprioception while the encoder and actor-critic are frozen.
+      <b>Right:</b> deployment in simulation, benchmark, and real-world environments.
+    </p>
+  </div>
+</section>
+
+<!-- ======================= Video ======================= -->
+<section class="section" id="video">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">Video</h2>
+        <div class="video-wrapper">
+          <video controls playsinline preload="metadata" poster="static/images/video_poster.jpg">
+            <source src="static/videos/CoRL_26_ALL.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= BibTeX ======================= -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-3">BibTeX</h2>
+    <!-- TODO: update once the paper is public -->
+    <pre><code>@article{loadaware2026,
+  title   = {Load-Aware Quadruped Navigation with Online Geometry Estimation},
+  author  = {Author One and Author Two and Author Three},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+<!-- ======================= Footer ======================= -->
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            This website is adapted from the
+            <a href="https://github.com/nerfies/nerfies.github.io" target="_blank">Nerfies</a> template,
+            licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">CC BY-SA 4.0</a> License.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
