@@ -1,4 +1,4 @@
-# Load-Aware Quadruped Navigation with Online Geometry Estimation — project page
+# Load-Aware Quadruped Navigation with Online Contact-based Geometry Estimation — project page
 
 Live site (after deploy): **https://Qiii04.github.io/OBJNav/**
 
